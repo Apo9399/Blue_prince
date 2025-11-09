@@ -92,11 +92,26 @@ class GameLogic:
         start_room = Piece("Entrée", "entrance.png", 0)
         self.manoir.set_piece(self.joueur.position, start_room)
 
-        # Petit catalogue simplifié
-        self.catalogue = [
-            Piece("Salle Bleue", "blue_room.png", 0),
-            Piece("Salle Verte", "green_room.png", 1),
-            Piece("Salle Dorée", "gold_room.png", 2),
+        start_room = Piece("Entrée", "salles/speciale/entree.png", 0) # <--- CETTE LIGNE
+        self.manoir.set_piece(self.joueur.position, start_room)
+
+        # 2. Créer le catalogue de pièces à tirer
+        # Mettez ici les chemins vers vos images "par couleur"
+        self.catalogue = [                                          # <--- ET CELLES-CI
+            # Salles Bleues
+            Piece("Pantry", "salles/bleu/pantry.png", 0),
+            Piece("Walk-in Closet", "salles/bleu/walk_in_closet.png", 1),
+            Piece("Salle de Bain", "salles/bleu/salle_de_bain.png", 1),
+            
+            # Salles Vertes
+            Piece("Kitchen", "salles/vert/kitchen.png", 1),
+            Piece("Serre", "salles/vert/serre.png", 2),
+            
+            # Salles Dorées
+            Piece("Salle Dorée", "salles/or/salle_doree.png", 2),
+            Piece("Bibliothèque", "salles/or/bibliotheque.png", 3),
+            
+            # ... ajoutez toutes vos autres pièces ici
         ]
 
         self.last_move_dir = None
@@ -191,4 +206,5 @@ class GameLogic:
         self.inventaire.perdre_pas()
 
         return True
+
 
